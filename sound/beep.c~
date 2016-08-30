@@ -1,0 +1,49 @@
+#include <avr/io.h>
+#include <util/delay.h>
+
+
+
+int main(void){
+  //set port
+  DDRD |= _BV(DDD3);
+  
+  int i;
+
+  while(1){
+    /*
+      S sound
+    */
+    for(i = 0; i < 3; i++){
+      PORTD |= _BV(PORTD3);
+      _delay_ms(1333);
+      PORTD &= ~_BV(PORTD3);
+      _delay_ms(1333);
+    }
+
+    _delay_ms(3000);
+    /*
+      O sound
+    */
+    for(i = 0; i < 3; i++){
+      PORTD |= _BV(PORTD3);
+      _delay_ms(2666);
+      PORTD &= ~_BV(PORTD3);
+      _delay_ms(2666);
+    }
+    /*
+      S sound
+    */
+
+    _delay_ms(3000);
+
+    for(i = 0; i < 3; i++){
+      PORTD |= _BV(PORTD3);
+      _delay_ms(1333);
+      PORTD &= ~_BV(PORTD3);
+      _delay_ms(1333);
+    }
+
+    _delay_ms(5000);
+    
+  }
+}
